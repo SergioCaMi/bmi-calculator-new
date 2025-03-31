@@ -15,8 +15,14 @@ const height = document.getElementById("height");
 const weight = document.getElementById("weight");
 const btn = document.getElementById("btn");
 const bmiResult = document.getElementById("bmi-result");
+const weightCondition = document.getElementById("weight-condition");
 
 btn.addEventListener("click", ()=>{
     let imc = weight.value / Math.pow(height.value/100, 2);
     bmiResult.value = imc.toFixed(2);
+    (imc<18.5) && (weightCondition.textContent = "Bajo peso");
+    (imc>=18.5 && imc<=24.9) && (weightCondition.textContent = "Peso normal");
+    (imc>=25 && imc<=29.9) && (weightCondition.textContent = "Sobrepeso");
+    (imc>=30) && (weightCondition.textContent = "Obesidad");
 });
+
